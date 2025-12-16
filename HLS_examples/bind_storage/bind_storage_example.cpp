@@ -9,7 +9,7 @@ extern "C"
         // Which solution is best for overall latency? 
         // Try commenting out the bind_storage pragma completely: is the automatic solution better or worse than yours?
         double local_var[N_VALS];
-        #pragma HLS bind_storage variable=local_var type=ram_1p impl=bram
+        #pragma HLS bind_storage variable=local_var type=ram_t2p impl=bram
 
     ASSIGN_LOOP:
         for (int i = 0; i < N_VALS; i += 2)
