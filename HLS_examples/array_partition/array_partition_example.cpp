@@ -3,11 +3,25 @@
 double sum_vec(double vec[8])
 {
     double sum = 0;
-    naive_sum_loop:
-    for(int i = 0; i < 8; i++)
-    {
-        sum += vec[i];
-    }
+    double M_int1[4], M_int2[2];
+#pragma HLS ARRAY_PARTITION variable=M_int1 type=block factor=2
+#pragma HLS ARRAY_PARTITION variable=M_int2	type=complete
+//    naive_sum_loop:
+//    for(int i = 0; i < 8; i++)
+//    {
+//        sum += vec[i];
+//    }
+    parallel_sum_loop_1:
+	for (int i = 0; i < 4; i++)
+	{
+		M_int1[i] = vec[2 * i] + vec[2 * i + 1];
+	}
+	parallel_sum_loop_2:
+	for (int i = 0; i < 2; i++)
+	{
+		M_int2[i] = M_int1[2 * i] + M_int1[2 * i + 1];
+	}
+	sum = M_int2[0] + M_int2[1];
     return sum;
 }
 
