@@ -1,11 +1,14 @@
-double sum_kernel(double *inputVector, int N)
+extern "C"
 {
-    double t = 0;
-    
-    for(int i = 0; i < N; i++)
-    {
-        t += inputVector[i];
-    }
-
-    return t;
+	double sum_kernel(double *inputVector, int N)
+	{
+	    double t = 0;
+	    
+	    for(int i = 0; i < N; i++)
+	    {
+	        t += inputVector[i];
+	    }
+	
+	    return t;
+	}
 }
