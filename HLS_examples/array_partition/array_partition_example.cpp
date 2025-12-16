@@ -21,6 +21,8 @@ extern "C"{
 
         double M1[64], M2[64], M3[64];
         // partition pragmas go here for these matrices 
+#pragma HLS ARRAY_PARTITION variable=M1 type=block factor=8
+#pragma HLS ARRAY_PARTITION variable=M2 type=block factor=8
 
         assign_matrix_loop:
         for(int i = 0; i < 64; i++)
@@ -32,7 +34,7 @@ extern "C"{
         // A variable to store the results of multiplications (8 multiplications per row-column product)
         double row_col_prod[8];
         //partition pragma goes here for this array 
-
+#pragma HLS ARRAY_PARTITION variable=row_col_prod type=block factor=8
         //Trivial implementation of Matrix multiply
         mult_loop_i:
         for(int i = 0; i < 8; i++)
