@@ -14,7 +14,7 @@ SUM_LOOP:
         for(int i = 0; i < N_VALS; i++)
         {
             // replace with your pipeline pragma 
-            #pragma HLS pipeline off
+//            #pragma HLS pipeline off
 
             sum += (A[i] / B[i]);
             out[i] = sum;
