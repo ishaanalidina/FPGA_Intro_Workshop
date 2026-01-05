@@ -43,7 +43,7 @@ extern "C"
 #pragma HLS interface m_axi port=out bundle=memblock_1
 
         //add a pragma here to declare this function a dataflow region
-
+#pragma hls dataflow
         // We don't want to alter global memory in place! So we have local
         // arrays to hold the result of processing the input arrays 
 //       double B_prime[N_VALS], A_prime[N_VALS];
