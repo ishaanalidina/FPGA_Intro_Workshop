@@ -4,9 +4,11 @@
 
 void log_vec(double vec[C_SIZE], double vec2[C_SIZE])
 {
+
     log_loop:
     for(int i = 0; i < C_SIZE; i++)
     {
+#pragma hls unroll
         vec2[i] = log(vec[i]);
     }
 }
