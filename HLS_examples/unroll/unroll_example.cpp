@@ -38,6 +38,7 @@ extern "C"
         sum_loop:
         for(int i = 0; i < N_VALS; i++)
         {
+#pragma hls unroll factor=2
             temp[i] = A[i] + B[i];
             temp[i] *= c_temp2[i];
             if(i % 2 != 0)
